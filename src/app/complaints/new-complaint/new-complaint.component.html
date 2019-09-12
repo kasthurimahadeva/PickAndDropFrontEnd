@@ -1,0 +1,58 @@
+<div class = "jumbotron">
+  <div class="container">
+    <div class="col-md-10 offset-md-3">
+      <form novalidate [formGroup] = "complaintForm">
+        <h2 class="heading">New Complaint</h2>
+        <div class="form-group d-flex mb-2">
+          <label class="col-md-3 col-form-label" for="name">Customer Name</label>
+          <div class="col-md-5">
+            <input class="form-control" id="name"  type="text" formControlName = "CustomerName"
+                   [ngClass] = "{'is-invalid': ((complaintForm.get('CustomerName').touched ||
+            complaintForm.get('CustomerName').dirty)) && (complaintForm.get('CustomerName').invalid)}" />
+            <span class="invalid-feedback">
+            <span *ngIf = "complaintForm.get('CustomerName').errors?.required">
+              Customer Name is required
+            </span>
+          </span>
+          </div>
+        </div>
+
+        <div class="form-group d-flex mb-2">
+          <label class="col-md-3 col-form-label" for="code">Email Address</label>
+          <div class="col-md-5">
+            <input class="form-control" id="code" type="text"  formControlName = "EmailAddress"
+                   [ngClass] = "{'is-invalid': ((complaintForm.get('EmailAddress').touched ||
+              complaintForm.get('EmailAddress').dirty)) && (complaintForm.get('EmailAddress').invalid)}" />
+            <span class="invalid-feedback">
+              <span *ngIf = "complaintForm.get('EmailAddress').errors?.email">
+               Enter valid email address
+              </span>
+              <span *ngIf = "complaintForm.get('EmailAddress').errors?.required">
+               Email address is required
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group d-flex mb-2">
+          <label class="col-md-3 col-form-label" for="image">Complaint Content</label>
+          <div class="col-md-5">
+            <textarea class="form-control" id="image"  type="text"  formControlName = "ComplaintContent"
+                   [ngClass] = "{'is-invalid': ((complaintForm.get('ComplaintContent').touched ||
+                  complaintForm.get('ComplaintContent').dirty)) && (complaintForm.get('ComplaintContent').invalid)}"></textarea>
+            <span class="invalid-feedback">
+                  <span *ngIf = "complaintForm.get('ComplaintContent').errors?.required">
+                    Complaint content  is required
+                  </span>
+                </span>
+          </div>
+        </div>
+        <button class="btn btn-primary add-btn" (click)="saveComplaint()" [disabled] = "complaintForm.invalid">
+          Save
+        </button>
+
+
+      </form>
+    </div>
+  </div>
+</div>

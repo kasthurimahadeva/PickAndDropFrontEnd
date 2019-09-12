@@ -1,0 +1,33 @@
+<div class="card">
+ <div class="row">
+   <button class="btn btn-outline-primary" [class.active]="_listFilter === ''" (click)="listFilter = ''">All</button>
+   <button class="btn btn-outline-primary" [class.active]="_listFilter === 'pending'" (click)="listFilter = 'pending'">Pending</button>
+   <button class="btn btn-outline-primary" [class.active]="_listFilter === 'resolved'" (click)="listFilter = 'resolved'">Resolved</button>
+   <button class="btn btn-outline-primary" [class.active]="_listFilter === 'move'" (click)="listFilter = 'move to high level'">Move to HighLevel</button>
+ </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Complaint Id</th>
+      <th>Customer Name</th>
+      <th>Email Address</th>
+      <th>Created Time</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody >
+    <tr *ngFor= "let complaint of complaintService.filteredComplaintlist let i = index">
+      <td>{{i + 1}}</td>
+      <td><a [routerLink]="['/complaint', complaint.ComplaintId]">{{complaint.CustomerName}}</a></td>
+      <td>{{complaint.EmailAddress}}</td>
+
+      <td>{{complaint.CreatedDateTime | date: 'short'}}</td>
+      <td id="{{complaint.Status}}">{{complaint.Status}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

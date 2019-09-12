@@ -1,0 +1,12 @@
+.card .row{
+  margin-left: 50px;
+  padding: 10px;
+}
+
+#Pending {
+  color: #1d1be8;
+}
+
+#Resolved {
+  color: green;
+}

@@ -1,0 +1,12 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+  <a class="navbar-brand">{{pageTitle}}</a>
+  <ul class="nav nav-pills">
+    <li><a class="nav-link" routerLinkActive = 'active' [routerLink] = "['/welcome']">Home</a></li>
+    <li><a class="nav-link" routerLinkActive='active' [routerLink] = "['/complaints']">Complaints List</a></li>
+    <li><a class="nav-link" routerLinkActive='active' [routerLink] = "['/complaint/create']">New Complaint</a></li>
+  </ul>
+
+  <div class = "col-md-4">
+    <input class="form-control" type="text" [(ngModel)] = 'listFilter' />
+  </div>
+</nav>

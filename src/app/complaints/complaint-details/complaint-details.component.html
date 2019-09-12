@@ -1,0 +1,57 @@
+<div class='card' >
+  <div class='card-header'>
+    Complaint Details
+  </div>
+
+  <div class='card-body'>
+    <div class='row'>
+      <div class='col-md-8'>
+        <div class='row'>
+          <div class='col-md-4'>Name:</div>
+          <div class='col-md-8'>{{complaint.CustomerName}}</div>
+        </div>
+
+        <div class='row'>
+          <div class='col-md-4'>Email:</div>
+          <div class='col-md-8'>{{complaint.EmailAddress}}</div>
+        </div>
+
+        <div class='row'>
+          <div class='col-md-4'>Description:</div>
+          <div class='col-md-8'>{{complaint.ComplaintContent}}</div>
+        </div>
+
+        <div class='row'>
+          <div class='col-md-4'>Created Time:</div>
+          <div class='col-md-8'>{{complaint.CreatedDateTime| date}}</div>
+        </div>
+
+        <div class='row'>
+          <div class='col-md-4'>Status</div>
+          <div class='col-md-8'>{{complaint.Status}}</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class='card-footer'>
+    <button class='btn btn-outline-secondary'
+            (click)='onBack()'
+            style='width:80px; margin-right: 20px'>
+      Back
+    </button>
+
+    <button *ngIf="complaint.Status === 'Pending'" class='btn btn-outline-primary'
+            (click)='onResolved()'
+            style='width:100px; margin-right: 20px'>
+      Resolved
+    </button>
+
+    <button *ngIf="complaint.Status === 'Pending'" class='btn btn-outline-warning'
+            (click)='onMove()'
+            style='width:200px'>
+       Moved to high level
+    </button>
+  </div>
+</div>
